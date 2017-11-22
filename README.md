@@ -5,4 +5,6 @@ Green Fox GitHub repo
 
 [Patchwork repo](https://github.com/PataiSzabolcs/patchwork.git)
 
-[Git lesson repository](https://github.com/PataiSzabolcs/git-lesson-repository.git)
+[Git lesson repo](https://github.com/PataiSzabolcs/git-lesson-repository.git)
+
+[Asbest syllabus](https://github.com/greenfox-academy/asbest-syllabus.git)
