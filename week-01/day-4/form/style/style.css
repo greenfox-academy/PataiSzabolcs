@@ -1,0 +1,126 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: #51486A;
+}
+
+body {
+    background-color: #DCD6CD;
+}
+
+main{
+    box-sizing: border-box;
+    width: 60%;
+    margin-left: 20%;
+    
+}
+h1 {
+    padding-top: 15px;
+    font-weight: normal;
+    font-size: 2rem;
+}
+
+h2 {
+    font-weight: normal;
+    color: #C9C5CB;
+    background-color: #938C97;
+    width: auto;
+    font-size: 1.5rem;
+}
+
+label {
+    font-weight: bold;
+    color: #635B73;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+input[type="radio"] {
+    margin-top: 7px;
+}
+
+.personal {
+    box-sizing: border-box;
+    width: 49.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+input[name="name"] {
+    display: block;
+}
+
+.date-of-birth {
+    display: inline-block;
+    width: 48.5%;
+}
+
+.gender {
+    display: inline-block;
+}
+
+.brand {
+    display: block;
+}
+
+article {
+    display: inline-block;
+}
+
+.first-article {
+    width: 49%;
+}
+
+.second-article {
+    width: 49%;
+}
+
+footer {
+    text-align: center;
+}
+
+.contact {
+    box-sizing: border-box;
+    width: 46.5%;
+    margin-left: 3%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+input {
+    margin-top: 4px;
+    margin-bottom: 7px;
+}
+
+select {
+    margin-top: 4px;
+}
+
+textarea {
+    margin-top: 4px;
+    margin-bottom: 7px;
+    width: 98.5%;
+    height: 80px;
+}
+
+input[name="phone-number"] {
+    display: block;
+}
+
+input[name="email"] {
+    display: block;
+}
+
+input[name="facebook-profile"] {
+    display: block;
+}
+
+input[name="twitter-profile"] {
+    display: block;
+}
+
+input[name="house-type"] {
+    display: block;
+}
+

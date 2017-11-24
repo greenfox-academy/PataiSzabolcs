@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin-ext" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <form action=index/ method="POST">
+      <!--profil header1 -->
+      <h1>
+        Profil
+      </h1>
+      <!--személyes adatok h2 -->
+      <div class="personal">
+      <h2>
+        Személyes adatok
+      </h2>
+        <!-- név -->
+        <label for="name">Név *</label><br>
+        <input type="text" name="name">
+        <!-- születzési év-->
+        <div class="date-of-birth">
+          <label for="date-of-birth">Születési éved</label><br>
+          <input type="number" name="date-of-birth" min="1900" max="2017">
+        </div>
+        <!-- nem-->
+        <div class="gender">
+          <label for="gender">Nemed</label><br>
+          <input type="radio" name="gender" value="nő">nő
+          <input type="radio" name="gender" value="férfi">férfi
+        </div>
+        <!--márkák footerrel -->
+        <div class="brand">
+          <label for="brand">Milyen márkákat szeretsz?</label><br>
+          <article class="first-article">
+            <input type="checkbox" name="brand" value="Adidas">Adidas<br>
+            <input type="checkbox" name="brand" value="Apple">Apple<br>
+            <input type="checkbox" name="brand" value="Coca-Cola">Coca-Cola<br>
+            <input type="checkbox" name="brand" value="Mazda">Mazda<br>
+            <input type="checkbox" name="brand" value="Nike">Nike<br>
+          </article>
+          <article class="second-article">
+            <input type="checkbox" name="brand" value="Opel">Opel<br>
+            <input type="checkbox" name="brand" value="Ray-Ban">Ray-Ban<br>
+            <input type="checkbox" name="brand" value="Starbucks">Starbucks<br>
+            <input type="checkbox" name="brand" value="Tesla">Tesla<br>
+            <input type="checkbox" name="brand" value="Yahoo">Yahoo
+          </article>
+          <footer>Többet is választhatsz!</footer>
+        </div>
+        <!-- kapcsolat-->
+      </div>
+      <div class="contact">
+      <h2>
+        Kapcsolat
+      </h2>
+        <!--telefon -->
+        <label for="phone-numer">Telefonszám *</label><br>
+        <input type="tel" name="phone-number" id="">
+        <!-- email-->
+        <label for="email">E-mail cím *</label><br>
+        <input type="email" name="email">
+        <!-- fb profil-->
+        <label for="facebook-profile">Facebook profilo</label><br>
+        <input type="text" name="facebook-profile">
+        <!-- twitter-->
+        <label for="twitter-profile">Twitter profilod</label><br>
+        <input type="text" name="twitter-profile">
+        <!-- háztípus-->
+        <label for="house-type">Milyen házban laksz?</label><br>
+        <select name="house-type" id="">
+          <option value="house">Ház</option>
+          <option value="flat">Lakás</option>
+          <option value="garage">Garázs</option>
+        </select>
+      </div>
+        <!-- bemutatkozás div-->
+        <label for="introduction">Bemutatkozás *</label><br>
+        <textarea name="introduction" rows="4" cols="50"></textarea><br>
+      <!-- cv div-->
+      <input type="file" name="CV"><br>
+      <!-- elfogadom div -->
+      <input type="checkbox" name="terms-checkbox">
+      <label for="terms-checkbox">Elfogadom a <a href="http://terms-of-use.com">felhasználási feltételeket</a></label><br>
+      <!-- mentés / űrlap inline blockban-->
+      <input type="submit" name="save" value="Mentés">
+      <input type="button" name="delete" value="Űrlap törlése">
+      </form>
+    </main>
+  </body>
+</html>
