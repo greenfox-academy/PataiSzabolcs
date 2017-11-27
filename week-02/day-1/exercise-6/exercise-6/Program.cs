@@ -18,10 +18,10 @@ namespace GreenFox
             int weeks = 17;
             int workingDays = 5;
             int totalCoding = codingHours * weeks * workingDays;
-            Console.WriteLine(totalCoding);
+            Console.WriteLine($"An attendee spends {totalCoding} hours with coding in a semester.");
             int workHours = 52;
             double average = (double)codingHours * (double)workingDays / (double)workHours * 100;
-            Console.WriteLine(average);
+            Console.WriteLine($"An attendee spends {average}%  of his or her working time with coding in the semester.");
             Console.ReadLine();
         }
     }
