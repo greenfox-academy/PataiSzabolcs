@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swapelements", "swapelements\swapelements.csproj", "{205A5266-5BD2-4E5C-BF1A-8B323F6EBADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{205A5266-5BD2-4E5C-BF1A-8B323F6EBADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205A5266-5BD2-4E5C-BF1A-8B323F6EBADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205A5266-5BD2-4E5C-BF1A-8B323F6EBADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205A5266-5BD2-4E5C-BF1A-8B323F6EBADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2155138A-5002-483D-B67F-2B1388F02127}
+	EndGlobalSection
+EndGlobal
