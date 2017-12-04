@@ -17,39 +17,23 @@ namespace Doubled
         }
         static void Decrypt(string sourceFilename, string targetFilename)
         {
-            //StreamReader reader = new StreamReader(sourceFilename);
-            //StreamWriter writer = new StreamWriter(targetFilename);
-
             string input = File.ReadAllText(sourceFilename);
-            char[] characters = input.ToArray();
+            char[] characters = input.ToCharArray();
             char[] newcharacters = new char[characters.Length];
             int j = 0;
             for ( int i = 0; i < newcharacters.Length; i++)
             {
-                try
+                if (characters[i +j + 1] != '\n' && i + j + 1 != 1)
                 {
-                    if (characters[i +j + 1] != '\n' && i + j + 1 != 1)
-                    {
-                        j++;
-                    }
-                    newcharacters[i] = characters[i + j + 1];
-
-                }
-                catch (Exception)
-                {
-                    
-                }
+                    j++;
+                }                    
+                newcharacters[i] = characters[i + j + 1];
             }
-            //writer.Write(newcharacters);
-            //writer.Close();
-
             string output = new string(newcharacters);
-            File.WriteAllLines(targetFilename, output);
-            //foreach (char character in newcharacters)
-            //{
-            //    Console.Write(character);
-            //}
-            Console.ReadLine();
+            string[] lines;
+            lines = output.Split('\n');
+
+            File.WriteAllLines(targetFilename, lines);
         }
     }
 }
