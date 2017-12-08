@@ -26,27 +26,22 @@ namespace Graphic
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
 
-            DrawCross(foxDraw, 0, 0, 600, 3);
+            DrawCross(foxDraw, 0, 0, 600, 6);
         }
-        static void DrawCross(FoxDraw foxDraw, double startingx, double startingy, double size, int levels)
+        static void DrawCross(FoxDraw foxDraw, double startingX, double startingY, double size, int levels)
         {
             foxDraw.StrokeColor(Colors.Black);
-            foxDraw.FillColor(Colors.White);
-            if (levels == 1)
+            foxDraw.FillColor(Colors.Yellow);
+            if (levels == 0)
             {
-                foxDraw.DrawRectangle(startingx + (size / 3), startingy, size / 3, size / 3);
-                foxDraw.DrawRectangle(startingx, startingy + (size / 3), size / 3, size / 3);
-                foxDraw.DrawRectangle(startingx + ((size / 3) * 2), startingy + (size / 3), size / 3, size / 3);
-                foxDraw.DrawRectangle(startingx + (size / 3), startingy + ((size / 3) * 2), size / 3, size / 3);
-
+                return;
             }
-            else
-            {
-                DrawCross(foxDraw, startingx + (size / 3), startingy, size / 3, levels-1);
-                DrawCross(foxDraw, startingx, startingy + (size / 3), size / 3, levels -1);
-                DrawCross(foxDraw, startingx + ((size / 3) * 2), startingy + (size / 3), size / 3, levels -1);
-                DrawCross(foxDraw, startingx + (size / 3), startingy + ((size / 3) * 2), size / 3, levels -1);
-            }
+            foxDraw.DrawRectangle(startingX, startingY, size, size);
+            
+                DrawCross(foxDraw, startingX + (size / 3), startingY, size / 3, levels-1);
+                DrawCross(foxDraw, startingX, startingY + (size / 3), size / 3, levels -1);
+                DrawCross(foxDraw, startingX + ((size / 3) * 2), startingY + (size / 3), size / 3, levels -1);
+                DrawCross(foxDraw, startingX + (size / 3), startingY + ((size / 3) * 2), size / 3, levels -1);            
         }
 
     }
