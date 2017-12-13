@@ -25,7 +25,7 @@ namespace TriangleFractal
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-            DrawTriangle(foxDraw, 0, 0, 550, 7);
+            DrawTriangle(foxDraw, 0, 0, 550, 5);
             
         }
         static void DrawTriangle(FoxDraw foxDraw, double startingX, double startingY, double size, int levels)
