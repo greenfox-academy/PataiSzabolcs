@@ -13,7 +13,7 @@ namespace Garden
         public double Water;
         public double Absorbation;
         public double WaterNeed;
-        public bool Thirsty = true;
+        public bool Thirsty;
 
         public void Needswater()
         {
