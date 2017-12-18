@@ -12,7 +12,7 @@ namespace RPG
     public class Map
     {
         public FoxDraw FoxDraw { get; set; }
-        public int[,] MapStructure { get; set; }
+        private int[,] MapStructure { get; set; }
 
         public Map (FoxDraw foxDraw, int[,] mapStructure)
         {
@@ -40,12 +40,12 @@ namespace RPG
 
         public void CreateFloorTile(int row, int column)
         {
-            FoxDraw.AddImage(@".\Assets\floor.png", column* 50, row * 50);
+            FoxDraw.AddTile(@".\Assets\floor.png", column* 50, row * 50);
         }
 
         public void CreateWallTile(int row, int column)
         {
-            FoxDraw.AddImage(@".\Assets\wall.png", column * 50, row * 50);
+            FoxDraw.AddTile(@".\Assets\wall.png", column * 50, row * 50);
         }
     }
 

@@ -13,13 +13,19 @@ namespace GreenFox
         private const int TILEWIDTH = 50;
         private const int TILEHEIGHT = 50;
 
-        private Canvas Canvas { get; set; }
+        public List<Image> Tiles { get; set; }
+        public List<Image> Enemies { get; set; }
+        public List<Image> Hero { get; set; }
+        public Canvas Canvas { get; set; }
         private SolidColorBrush LineColor { get; set; } = SystemColors.WindowFrameBrush;
         private SolidColorBrush ShapeColor { get; set; } = new SolidColorBrush(Colors.DarkGreen);
 
         public FoxDraw(Canvas canvas)
         {
             Canvas = canvas;
+            Tiles = new List<Image>();
+            Hero = new List<Image>();
+            Enemies = new List<Image>();
         }
 
         public void BackgroundColor(Color color)
@@ -105,7 +111,8 @@ namespace GreenFox
             SetPosition(rectangle, x, y);
         }
 
-        public void AddImage(string source, double x, double y)
+
+        public void AddEnemy(string source, double x, double y)
         {
             var image = new Image()
             {
@@ -114,6 +121,34 @@ namespace GreenFox
                 Source = new BitmapImage(new Uri(source, UriKind.Relative))
             };
 
+            Enemies.Add(image);
+            Canvas.Children.Add(image);
+            SetPosition(image, x, y);
+        }
+        public void AddHero(string source, double x, double y)
+        {
+            var image = new Image()
+            {
+                Width = TILEWIDTH,
+                Height = TILEHEIGHT,
+                Source = new BitmapImage(new Uri(source, UriKind.Relative))
+            };
+
+            Hero.Add(image);
+            Canvas.Children.Add(image);
+            SetPosition(image, x, y);
+        }
+
+        public void AddTile(string source, double x, double y)
+        {
+            var image = new Image()
+            {
+                Width = TILEWIDTH,
+                Height = TILEHEIGHT,
+                Source = new BitmapImage(new Uri(source, UriKind.Relative))
+            };
+
+            Tiles.Add(image);
             Canvas.Children.Add(image);
             SetPosition(image, x, y);
         }

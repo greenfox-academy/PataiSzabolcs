@@ -21,17 +21,29 @@ namespace RPG
     /// </summary>
     public partial class MainWindow : Window
     {
+        private FoxDraw FoxDraw;
+        private Hero Hero;
+        private int[,] MapStructure;
+        
+
         public MainWindow()
         {
             InitializeComponent();
             SetUpMap();
+            SetUpCharacters();
 
+        }
+
+        public void SetUpCharacters()
+        {
+            FoxDraw foxDraw = new FoxDraw(canvas);
+            Hero = new Hero(FoxDraw, MapStructure);
         }
 
         public void SetUpMap()
         {
-            FoxDraw foxDraw = new FoxDraw(canvas);
-            int[,] mapStructure = new int[11, 10]
+            FoxDraw = new FoxDraw(canvas);
+            MapStructure = new int[11, 10]
             {
                 { 0, 0, 0, 1, 0, 1, 0, 0, 0, 0 },
                 { 0, 0, 0, 1, 0, 1, 0, 1, 1, 0 },
@@ -46,15 +58,14 @@ namespace RPG
                 { 0, 1, 0, 1, 0, 1, 0, 0, 0, 0 }
             };
 
-            Map map = new Map(foxDraw, mapStructure);
+            Map map = new Map(FoxDraw, MapStructure);
             map.DrawMap();            
         }
 
-        public void AddTile()
+        public void KeyDownEvent(object sender, KeyEventArgs e)
         {
-            FoxDraw foxDraw = new FoxDraw(canvas);
-            foxDraw.AddImage(@".\Assets\boss.png", 20, 20);
-
+            FoxDraw = new FoxDraw(canvas);
+            Hero.Move(FoxDraw, e);
         }
     }
 }
