@@ -104,6 +104,9 @@
     <Content Include="Assets\floor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Assets\hero-right.png" />
+    <Resource Include="Assets\hero-left.png" />
+    <Resource Include="Assets\hero-up.png" />
     <Resource Include="Assets\hero-down.png" />
     <Resource Include="Assets\wall.png" />
   </ItemGroup>
