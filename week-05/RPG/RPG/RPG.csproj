@@ -63,6 +63,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Character.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="FoxDraw.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -104,10 +105,21 @@
     <Content Include="Assets\floor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\hero-right.png" />
-    <Resource Include="Assets\hero-left.png" />
-    <Resource Include="Assets\hero-up.png" />
-    <Resource Include="Assets\hero-down.png" />
+    <Content Include="Assets\skeleton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\hero-right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\hero-left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\hero-up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\hero-down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\wall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

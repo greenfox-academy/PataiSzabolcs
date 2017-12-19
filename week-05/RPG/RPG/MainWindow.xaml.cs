@@ -23,6 +23,7 @@ namespace RPG
     {
         private FoxDraw FoxDraw;
         private Hero Hero;
+        private Enemy Enemy;
         private int[,] MapStructure;
         
 
@@ -31,13 +32,32 @@ namespace RPG
             InitializeComponent();
             SetUpMap();
             SetUpCharacters();
-
         }
 
         public void SetUpCharacters()
         {
             FoxDraw foxDraw = new FoxDraw(canvas);
             Hero = new Hero(FoxDraw, MapStructure);
+            List<Enemy> skeletons = new List<Enemy>();
+            Random random = new Random();            
+            for (int i = 0; i < 3; i++)
+            {
+                int[] skeletonPosition = new int[] { random.Next(0, 10), random.Next(0, 10) };
+                while (!Character.IsFloor(skeletonPosition))
+                {
+                    skeletonPosition[0] = random.Next(0, 10);
+                    skeletonPosition[1] = random.Next(0, 10);
+                }
+                Enemy skeleton = new Enemy(FoxDraw, MapStructure, skeletonPosition, "skeleton");
+                skeletons.Add(skeleton);
+            }
+            int[] bossPosition = new int[] { random.Next(0, 10), random.Next(0, 10) };
+            while (!Character.IsFloor(bossPosition))
+            {
+                bossPosition[0] = random.Next(0, 10);
+                bossPosition[1] = random.Next(0, 10);
+            }
+            Enemy boss = new Enemy(FoxDraw, MapStructure, bossPosition, "boss");
         }
 
         public void SetUpMap()

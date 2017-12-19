@@ -11,12 +11,10 @@ namespace RPG
 {
     class Hero : Character
     {
-        public Hero (FoxDraw foxDraw, int[,] mapstructure)
+        public Hero (FoxDraw foxDraw, int[,] mapstructure) : base(foxDraw, mapstructure)
         {
             Position[0] = 0;
             Position[1] = 0;
-            MapStructure = mapstructure;
-            FoxDraw = foxDraw;
             foxDraw.AddHero(@".\Assets\hero-down.png", Position[0], Position[1]);
         }
 
