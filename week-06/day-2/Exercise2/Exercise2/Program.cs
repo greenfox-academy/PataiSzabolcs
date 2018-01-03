@@ -12,12 +12,9 @@ namespace Exercise2
         {
             int[] n = { 1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14 };
 
-            int[] oddNumbers = n.Where(i => i % 2 == 1).ToArray();
+            var oddNumbersAverage = n.Where(i => i % 2 == 1).Average(i => i);
 
-            foreach (int number in oddNumbers)
-            {
-                Console.WriteLine(number);
-            }
+            Console.WriteLine(oddNumbersAverage);
 
             Console.ReadLine();
         }
