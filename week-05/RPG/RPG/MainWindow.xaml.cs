@@ -23,18 +23,29 @@ namespace RPG
     {
         private FoxDraw FoxDraw;
         private Hero Hero;
-        private Enemy Enemy;
         private int[,] MapStructure;
-        
+        private int[] HeroPosition;
+        private List<int[]> EnemyPosition;
 
         public MainWindow()
         {
             InitializeComponent();
-            SetUpMap();
-            SetUpCharacters();
+            
+            StartGame();
+            
+            
         }
 
-        public void SetUpCharacters()
+        public void StartGame()
+        {
+            SetUpMap();
+            EnemyPosition = new List<int[]>();
+            HeroPosition = new int[2];
+            SetUpCharacters(EnemyPosition, HeroPosition);
+            SetUpHUD();
+        }
+
+        public void SetUpCharacters(List<int[]> EnemyPosition, int[] HeroPosition)
         {
             FoxDraw foxDraw = new FoxDraw(canvas);
             Hero = new Hero(FoxDraw, MapStructure);
@@ -43,21 +54,29 @@ namespace RPG
             for (int i = 0; i < 3; i++)
             {
                 int[] skeletonPosition = new int[] { random.Next(0, 10), random.Next(0, 10) };
-                while (!Character.IsFloor(skeletonPosition))
+                while (!IsFloor(skeletonPosition))
                 {
                     skeletonPosition[0] = random.Next(0, 10);
                     skeletonPosition[1] = random.Next(0, 10);
                 }
                 Enemy skeleton = new Enemy(FoxDraw, MapStructure, skeletonPosition, "skeleton");
+                EnemyPosition.Add(skeleton.Position);
                 skeletons.Add(skeleton);
             }
             int[] bossPosition = new int[] { random.Next(0, 10), random.Next(0, 10) };
-            while (!Character.IsFloor(bossPosition))
+            while (!IsFloor(bossPosition))
             {
                 bossPosition[0] = random.Next(0, 10);
                 bossPosition[1] = random.Next(0, 10);
-            }
+            }            
             Enemy boss = new Enemy(FoxDraw, MapStructure, bossPosition, "boss");
+            EnemyPosition.Add(boss.Position);
+
+        }
+
+        public bool IsFloor(int[] position)
+        {
+            return MapStructure[position[1], position[0]] == 0;
         }
 
         public void SetUpMap()
@@ -81,10 +100,15 @@ namespace RPG
             map.DrawMap();            
         }
 
+        public void SetUpHUD()
+        {
+            HUD.Text = "Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6";
+        }
+
         public void KeyDownEvent(object sender, KeyEventArgs e)
         {
             FoxDraw = new FoxDraw(canvas);
-            Hero.Move(FoxDraw, e);
+            Hero.MoveHero(FoxDraw, e);
         }
     }
 }

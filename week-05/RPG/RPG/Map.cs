@@ -12,12 +12,27 @@ namespace RPG
     public class Map
     {
         public FoxDraw FoxDraw { get; set; }
-        private int[,] MapStructure { get; set; }
+        public int[,] MapStructure { get; set; }
+        public const int wall = 1;
+        public const int floor = 0;
+        public List<Character> list = new List<Character>();
 
         public Map (FoxDraw foxDraw, int[,] mapStructure)
         {
             FoxDraw = foxDraw;
-            MapStructure = mapStructure;
+            MapStructure = new int[10, 10]
+            {
+                { 0, 0, 0, 1, 0, 1, 0, 0, 0, 0 },
+                { 0, 0, 0, 1, 0, 1, 0, 1, 1, 0 },
+                { 0, 1, 1, 1, 0, 1, 0, 1, 1, 0 },
+                { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 },
+                { 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 },
+                { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 },
+                { 0, 1, 0, 1, 0, 1, 1, 0, 1, 0 },
+                { 0, 0, 0, 0, 0, 1, 1, 0, 1, 0 },
+                { 0, 1, 1, 1, 0, 0, 0, 0, 1, 0 },
+                { 0, 0, 0, 1, 0, 1, 1, 0, 1, 0 }
+            };
         }
 
         public void DrawMap()

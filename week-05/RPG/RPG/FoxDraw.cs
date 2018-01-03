@@ -20,6 +20,35 @@ namespace GreenFox
         private SolidColorBrush LineColor { get; set; } = SystemColors.WindowFrameBrush;
         private SolidColorBrush ShapeColor { get; set; } = new SolidColorBrush(Colors.DarkGreen);
 
+        public void DrawMap()
+        {
+            for (int i = 0; i < MapStructure.GetLength(0); i++)
+            {
+                for (int j = 0; j < MapStructure.GetLength(1); j++)
+                {
+                    if (MapStructure[i, j] == 1)
+                    {
+                        CreateWallTile(i, j);
+                    }
+                    else
+                    {
+                        CreateFloorTile(i, j);
+                    }
+                }
+            }
+        }
+
+        public void CreateFloorTile(int row, int column)
+        {
+            FoxDraw.AddTile(@".\Assets\floor.png", column * 50, row * 50);
+        }
+
+        public void CreateWallTile(int row, int column)
+        {
+            FoxDraw.AddTile(@".\Assets\wall.png", column * 50, row * 50);
+        }
+
+
         public FoxDraw(Canvas canvas)
         {
             Canvas = canvas;

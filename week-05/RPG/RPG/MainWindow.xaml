@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPG"
         mc:Ignorable="d"
-        Title="MainWindow" Height="551" Width="1008" KeyDown="KeyDownEvent">
+        Title="MainWindow" Height="582.333" Width="1008" KeyDown="KeyDownEvent">
     <Grid>
-        <Canvas Name="canvas"/>
+        <Canvas Name="canvas">
+            <TextBlock Name="HUD" Text="HUD" Canvas.Left="0" Canvas.Top="500" Width="500" Height="50" FontSize="20" FontWeight="Bold"/>
+        </Canvas>
     </Grid>
 </Window>

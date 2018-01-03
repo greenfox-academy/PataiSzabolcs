@@ -24,7 +24,6 @@ namespace AircraftCarrier
         {
             if (Refill(ammo) < 0)
             {
-                this.Ammo = ammo;
                 return 0;
             }
             else if (this.Ammo == MaxAmmo)
@@ -33,7 +32,6 @@ namespace AircraftCarrier
             }
             else
             {
-                this.Ammo = MaxAmmo;
                 return ammo - MaxAmmo;
             }
         }

@@ -65,7 +65,9 @@
     <Compile Include="Character.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="FoxDraw.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

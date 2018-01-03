@@ -7,22 +7,21 @@ using GreenFox;
 
 namespace RPG
 {
-    class Character
+    class Character : Map
     {
         public int[] Position = new int[] { 0, 0 };
-        public FoxDraw FoxDraw { get; set; }
-        public static int[,] MapStructure { get; set; }
+        public int HealthPoint { get; set; }
+        public int DefensePoint { get; set; }
+        public int StrikePoint { get; set; }
+        public Random random = new Random();
 
-        public Character (FoxDraw foxDraw, int[,] mapstructure)
+        public Character (FoxDraw foxDraw, int[,] mapStructure) : base(foxDraw, mapStructure)
         {
-            MapStructure = mapstructure;
+            MapStructure = mapStructure;
             FoxDraw = foxDraw;
         }
         
-        public static bool IsFloor(int[] position)
-        {
-            return MapStructure[position[1], position[0]] == 0;
-        }
+        
         //public void SetPosition(int[] position)
         //{
         //    Position[0] = position[0] * 50;
