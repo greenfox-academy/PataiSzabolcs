@@ -1,0 +1,19 @@
+﻿@*@model List<Todos.Models.Todo> *@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List of Todos</title>
+</head>
+<body>
+    <h1>
+        Todos for today
+    </h1>
+    <ul>
+        @foreach (var todo in Model)
+        {
+            <li>@todo.Title</li>
+        }
+    </ul>
+
+
+</body>
+</html>
