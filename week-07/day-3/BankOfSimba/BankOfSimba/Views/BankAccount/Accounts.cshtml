@@ -1,0 +1,53 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Accounts</title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Type of the Animal</th>
+            <th>Currency</th>
+            <th>Index</th>
+            <th>Is this animal a King?</th>
+            <th>Is this animal Good or Bad?</th>
+        </tr>
+        @foreach (var account in Model.BankAccounts)
+        {
+            <tr>
+                <td>@account.Name</td>
+                <td>@account.Balance</td>
+                <td>@account.AnimalType</td>
+                <td>@account.Currency</td>
+                <td>@Model.BankAccounts.IndexOf(account)</td>
+                @if (account.IsKing)
+                {
+                     <td id="king">True King</td>
+                }
+                else
+                {
+                   <td>Nope</td>
+                }
+                @if (account.IsBad)
+                {
+                    <td>Bad Guy</td>
+                }
+                else
+                {
+                    <td>Good One</td>
+                }
+
+
+            </tr>
+        }        
+    </table>
+    <form action="/raise" method="post">
+        Name:<br>
+        <input type="text" name="Name">
+        <br>
+        <input type="submit" value="Give Money">
+    </form> 
+</body>
+</html>

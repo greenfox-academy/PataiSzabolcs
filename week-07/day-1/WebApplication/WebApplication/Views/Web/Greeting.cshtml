@@ -1,0 +1,14 @@
+﻿@model WebApplication.Models.Greeting
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+        @for (int i = 0; i < @Model.hellos.Count(); i++)
+        {
+            <span style="color: rgb(@Model.random.Next(0, 256), @Model.random.Next(0, 256), @Model.random.Next(0, 256)); font-size: @Model.random.Next(5, 35)px;">@Model.hellos[i]</span>
+        }
+</body> 
+</html>
