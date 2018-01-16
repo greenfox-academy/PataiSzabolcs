@@ -1,0 +1,59 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Clients</title>
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Billable Hours</th>
+            <th>Hourly Rate</th>
+            <th>Billable Amount</th>
+            <th>Billing Day</th>
+            <th>Paid</th>
+            <th>Set Payment Event</th>
+        </tr>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>@client.Name</td>
+                <td>@client.BillableHours<span> &euro;</span></td>
+                <td>@client.HourlyRate<span> &euro;</span></td>
+                <td>@client.PayableAmount<span> &euro;</span></td>
+                <td>@client.BillingDay<span>th</span></td>
+                @if (client.IsPaid)
+                {
+                    <td>paid</td>
+                    <td></td>
+                }
+                else if (client.BillingDay > 12)
+                {
+                    <td>not due</td>
+                    <td>
+                        <form action="/paid" method="post">
+                            <input type="hidden" name="id" value="@client.Id">
+                            <input type="submit" value="Received payment">
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td class="late">late</td>
+                    <td>
+                        <form action="/paid" method="post">
+                            <input type="hidden" name="id" value="@client.Id">
+                            <input type="submit" value="Received payment">
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+    <form action="/add">
+        <input type="submit" value="Add new client">
+    </form>
+</body>
+</html>

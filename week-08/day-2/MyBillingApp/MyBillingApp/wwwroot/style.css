@@ -1,0 +1,36 @@
+﻿body {
+    background-color:oldlace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+
+.late {
+    font-style: italic;
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    text-shadow: initial;
+    text-transform: uppercase;
+    background-color: red;
+}
+.sg {
+    height: 0;
+    width: 0;
+}
