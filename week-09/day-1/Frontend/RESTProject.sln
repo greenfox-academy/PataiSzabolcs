@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{6867EB18-0AE0-4298-8201-C1B0FF39B392}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTExercises", "Frontend\RESTExercises.csproj", "{6867EB18-0AE0-4298-8201-C1B0FF39B392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
