@@ -1,0 +1,20 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add User</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+
+    <legend>Add New User</legend>
+    <form action="/addnewuser" method="post">
+        Name:<br>
+        <input type="text" Name="Username" value="">
+        <br>
+        Password:<br>
+        <input type="password" name="Password" value="">
+        <br><br>
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Add New User">
+    </form>
+</body>
+</html>

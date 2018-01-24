@@ -1,0 +1,25 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add client</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <legend>Add New Client</legend>
+    <form action="/addclient" method="post">
+        Name:<br>
+        <input type="text" Name="name" value="">
+        <br>
+        Hourly Rate:<br>
+        <input type="number" name="hourlyRate" value="">
+        <br>
+        Billing Day:<br>
+        <input type="number" Name="billingDay" value="">
+        <br>
+        User Id:<br>
+        <input type="number" Name="UserId" value="">
+        <br><br>
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Add New Client">
+    </form>
+</body>
+</html>

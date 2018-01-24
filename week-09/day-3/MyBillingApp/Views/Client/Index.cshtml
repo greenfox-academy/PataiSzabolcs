@@ -1,0 +1,104 @@
+﻿@model List<MyBillingApp.Models.Client>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Clients</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">User</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Add New Client</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <table class="table table-hover" style="width:100%">
+        <tr class="table-secondary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Billable Hours</th>
+            <th>Hourly Rate</th>
+            <th>Billable Amount</th>
+            <th>Billing Day</th>
+            <th>Paid</th>
+            <th>Set Payment Event</th>
+            <th>Service Provider</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>@client.Name</td>
+                <td>@client.BillableHours</td>
+                <td>@client.HourlyRate<span> &euro;</span></td>
+                <td>@client.PayableAmount<span> &euro;</span></td>
+                <td>@client.BillingDay<span>th</span></td>
+                @if (client.IsPaid)
+                {
+                    <td>paid</td>
+                    <td></td>
+                }
+                else if (client.BillingDay > 12)
+                {
+                    <td>not due</td>
+                    <td>
+                        <form action="/paid" method="post" style="margin-bottom: 0px">
+                            <input type="hidden" name="id" value="@client.Id">
+                            <input type="submit" class="btn btn-outline-secondary btn-sm" value="Received payment">
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td class="late">late</td>
+                    <td>
+                        <form action="/paid" method="post" style="margin-bottom: 0px">
+                            <input type="hidden" name="id" value="@client.Id">
+                            <input type="submit" class="btn btn-outline-secondary btn-sm" value="Received payment">
+                        </form>
+                    </td>
+                }
+                @if (client.ServiceProvider != null)
+                {
+                    <td>@client.ServiceProvider.Username</td>
+                }
+                <td>
+                    <form action="/edit" style="margin-bottom: 0px">
+                        <input type="hidden" name="id" value="@client.Id">
+                        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form action="/delete" method="post" style="margin-bottom: 0px">
+                        <input type="hidden" name="id" value="@client.Id">
+                        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

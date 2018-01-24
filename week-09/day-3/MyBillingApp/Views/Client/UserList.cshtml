@@ -1,0 +1,19 @@
+﻿@model List<MyBillingApp.Models.User>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>All User</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <legend>All User</legend>
+    @foreach (var user in Model)
+    {
+        <p>@user.Username</p>
+        @foreach (var client in user.Clients)
+        {
+            <p>@client.Name</p>
+        }
+    }
+</body>
+</html>

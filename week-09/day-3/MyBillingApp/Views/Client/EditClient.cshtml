@@ -1,0 +1,29 @@
+﻿@model MyBillingApp.Models.Client
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit Client</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+</head>
+<body>
+    <legend>Edit Client</legend>
+    <form action="/editclient" method="post">
+        <input type="hidden" name="id" value="@Model.Id">
+        Name:<br>
+        <input type="text" Name="name" value="@Model.Name">
+        <br>
+        Billable Hours:<br>
+        <input type="number" name="hourlyRate" value="@Model.BillableHours">
+        <br>
+        Hourly Rate:<br>
+        <input type="number" name="hourlyRate" value="@Model.HourlyRate">
+        <br>
+        Billing Day:<br>
+        <input type="number" Name="billingDay" value="@Model.BillingDay">
+        <br>
+        <input type="hidden" name="userId" value="@Model.UserId">
+        <br><br>
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Edit Client">
+    </form>
+</body>
+</html>

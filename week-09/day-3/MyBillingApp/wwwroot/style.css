@@ -1,0 +1,46 @@
+﻿body {
+    background-color: white;
+    color: darkslategray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    text-align: left;
+}
+
+tr {
+    height: 15px;
+}
+
+    tr:nth-child(even) {
+        opacity: 0.8;
+    }
+
+
+    tr:nth-child(odd) {
+        background-color: white;
+        opacity: 0.8;
+    }
+
+.late {
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    text-shadow: initial;
+    text-transform: uppercase;
+    background-color: darkgray;
+}
+
+.sg {
+    height: 0;
+    width: 0;
+}
