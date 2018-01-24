@@ -142,11 +142,38 @@ namespace RESTExercises.Controllers
         {
             homeRepository.LogNewEntry(GetEndpoint(), GetReceivedData());
 
-            if (text != null && !text.Equals(String.Empty))
+            if (text != null)
             {
-                return Json(new { sith_text = homeService.SithReverse(text) });
+                if (what.Equals("sum"))
+                {
+                    int sumOfNumbers = numbers.Sum();
+                    return Json(new { result = sumOfNumbers });
+                }
+
+                if (what.Equals("multiply"))
+                {
+                    int product = 1;
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        product *= numbers[i];
+                    }
+                    return Json(new { result = product });
+                }
+
+                if (what.Equals("double"))
+                {
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        numbers[i] *= 2;
+                    }
+                    return Json(new { result = numbers });
+                }
             }
-            return Json(new { error = "Feed me some text you have to, padawan young you are. Hmmm." });
+            if (what == null)
+            {
+                return Json(new { error = "Please provide an operation!" });
+            }
+            return Json(new { error = "Please provide a number!" });
         }
 
         [HttpGet("/log")]
