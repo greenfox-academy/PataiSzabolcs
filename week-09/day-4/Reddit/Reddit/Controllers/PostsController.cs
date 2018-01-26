@@ -34,7 +34,7 @@ namespace Reddit.Controllers
                 title = addedPost.Title,
                 url = addedPost.Url,
                 timestamp = addedPost.TimeStamp,
-                score = addedPost.Score
+                score = addedPost.Score,
             });
         }
 

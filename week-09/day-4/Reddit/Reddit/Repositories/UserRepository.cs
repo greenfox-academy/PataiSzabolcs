@@ -1,4 +1,5 @@
-﻿using Reddit.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Reddit.Entities;
 using Reddit.Models;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,16 @@ namespace Reddit.Repositories
             this.postContext = postContext;
         }
 
-        public User AddUser(User json)
+        public User AddUser(User newUser)
         {
-            postContext.UserList.Add(json);
+            postContext.UserList.Add(newUser);
             postContext.SaveChanges();
-            return json;
+            return newUser;
         }
 
         public User GetUser(int id)
         {
+            postContext.PostList.Load();
             return postContext.UserList.FirstOrDefault(u => u.Id == id);
         }
 

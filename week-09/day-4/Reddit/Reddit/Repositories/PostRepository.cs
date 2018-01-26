@@ -22,14 +22,14 @@ namespace Reddit
             return postContext.PostList;
         }
 
-        public Post AddPost(string username, Post json)
+        public Post AddPost(string username, Post newPost)
         {
-            json.Owner = postContext.UserList.FirstOrDefault(u => u.Username.Equals(username));
-            json.Owner.Posts.Add(json);
+            newPost.Owner = postContext.UserList.FirstOrDefault(u => u.Username.Equals(username));
+            postContext.PostList.Add(newPost);
             postContext.UserList.Load();
-            postContext.PostList.Add(json);
+            newPost.Owner.Posts.Add(newPost);
             postContext.SaveChanges();
-            return json;
+            return newPost;
         }
 
         public Post UpvotePost(string username, int id)

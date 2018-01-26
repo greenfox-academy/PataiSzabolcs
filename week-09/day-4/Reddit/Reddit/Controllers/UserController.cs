@@ -31,15 +31,12 @@ namespace Reddit.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddUser([FromBody]User json)
+        public IActionResult AddUser([FromBody]User newUser)
         {
-            var addedUser = userRepository.AddUser(json);
+            var addedUser = userRepository.AddUser(newUser);
             return Json(new
             {
-                id = addedUser.Id,
-                username = addedUser.Username,
-                postcount = addedUser.Posts.Count(),
-                usercount = userRepository.UserCount()
+                addedUser
             });
         }
     }
