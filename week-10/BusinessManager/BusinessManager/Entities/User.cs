@@ -11,5 +11,7 @@ namespace BusinessManager.Entities
         public string Name { get; set; }
         public List<Client> AdministeredClients { get; set; }
         public List<Case> AdministeredCases { get; set; }
+        public List<Case> WorkedCases { get; set; }
+        public List<Event> Events { get; set; }
     }
 }
