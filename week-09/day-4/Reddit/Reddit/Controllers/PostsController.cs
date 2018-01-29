@@ -35,6 +35,7 @@ namespace Reddit.Controllers
                 url = addedPost.Url,
                 timestamp = addedPost.TimeStamp,
                 score = addedPost.Score,
+                owner = addedPost.Owner.Username
             });
         }
 
