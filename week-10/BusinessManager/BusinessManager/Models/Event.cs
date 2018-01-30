@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BusinessManager.Entities
+namespace BusinessManager.Models
 {
     public class Event
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public List<User> Participants { get; set; }
+        public IList<User> Participants { get; set; }
         public Case Case { get; set; }
         public string Description { get; set; }
+        public IList<Document> Documents { get; set; }
     }
 }
