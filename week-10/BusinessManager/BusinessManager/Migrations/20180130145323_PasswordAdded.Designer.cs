@@ -11,9 +11,10 @@ using System;
 namespace BusinessManager.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    partial class BusinessContextModelSnapshot : ModelSnapshot
+    [Migration("20180130145323_PasswordAdded")]
+    partial class PasswordAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,8 +123,6 @@ namespace BusinessManager.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Title");
-
                     b.Property<int?>("UserId");
 
                     b.HasKey("Id");
@@ -222,9 +221,9 @@ namespace BusinessManager.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Password");
 
                     b.HasKey("Id");
 

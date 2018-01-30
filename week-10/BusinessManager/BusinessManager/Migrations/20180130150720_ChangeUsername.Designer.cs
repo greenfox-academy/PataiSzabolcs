@@ -11,9 +11,10 @@ using System;
 namespace BusinessManager.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    partial class BusinessContextModelSnapshot : ModelSnapshot
+    [Migration("20180130150720_ChangeUsername")]
+    partial class ChangeUsername
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,8 +122,6 @@ namespace BusinessManager.Migrations
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("Description");
-
-                    b.Property<string>("Title");
 
                     b.Property<int?>("UserId");
 
