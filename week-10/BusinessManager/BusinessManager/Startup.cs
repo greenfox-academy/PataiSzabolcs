@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessManager.Entities;
+using BusinessManager.Repositories;
+using BusinessManager.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +32,10 @@ namespace BusinessManager
         {
             services.AddMvc();
             services.AddDbContext<BusinessContext>(options => options.UseNpgsql(Configuration["EZManagerDbConnection"]));
+            services.AddScoped<UserService>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<LoginService>();
+            services.AddScoped<LoginRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
