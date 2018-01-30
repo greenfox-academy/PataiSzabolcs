@@ -21,6 +21,8 @@ namespace BusinessManager.Entities
         public DbSet<Event> Events { get; set; }
         public DbSet<ContactPerson> ContacPeople { get; set; }
         public DbSet<BillingInfo> BillingInfoList { get; set; }
+        public DbSet<Document> Documents{ get; set; }
+        public DbSet<Billable> Billables { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BusinessManager.Models.JointModels;
+using System.Collections.Generic;
 
 namespace BusinessManager.Models
 {
@@ -7,7 +8,7 @@ namespace BusinessManager.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public IList<Case> Cases { get; set; }
-        public IList<User> ClientAdmins { get; set; }
+        public IList<ClientAdmin> ClientAdmins { get; set; }
         public BillingInfo BillingInfo { get; set; }
         public IList<ContactPerson> ContactPeople { get; set; }
         public int GeneralPhone { get; set; }
