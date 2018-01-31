@@ -41,7 +41,7 @@ namespace BusinessManager.Controllers
         {
             return View();
         }
-
+               
         [HttpGet("addclient")]
         public IActionResult AddClient()
         {
