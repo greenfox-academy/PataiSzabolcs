@@ -4,14 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace BusinessManager.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    partial class BusinessContextModelSnapshot : ModelSnapshot
+    [Migration("20180131102501_AddingCaseTitle")]
+    partial class AddingCaseTitle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,8 +106,6 @@ namespace BusinessManager.Migrations
                     b.Property<int?>("CaseId");
 
                     b.Property<string>("Path");
-
-                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
@@ -225,8 +226,6 @@ namespace BusinessManager.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Password");
-
-                    b.Property<string>("Salt");
 
                     b.Property<string>("Username");
 

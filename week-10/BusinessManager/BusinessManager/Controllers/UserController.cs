@@ -36,49 +36,55 @@ namespace BusinessManager.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("addnewclient")]
-        public IActionResult AddNewClient()
+        [HttpGet("edituser")]
+        public IActionResult EditUser()
         {
             return View();
         }
 
-        [HttpPost("addnewclient")]
-        public IActionResult NewClientAdded(string name, string clientAdmin)
+        [HttpGet("addclient")]
+        public IActionResult AddClient()
         {
-            userService.AddClient(name, clientAdmin);
+            return View(userService.GetAllUsers());
+        }
+
+        [HttpPost("addclient")]
+        public IActionResult ClientAdded(string name, int clientAdminId)
+        {
+            userService.AddClient(name, clientAdminId);
             return RedirectToAction("Index");
         }
 
         [HttpGet("addcase")]
         public IActionResult AddCase()
         {
-            return View();
+            return View(userService.GetAllClientsAndUsers());
         }
 
         [HttpPost("addcase")]
-        public IActionResult CaseAdded(int clientId, string caseAdmin)
+        public IActionResult CaseAdded(int clientId, string title, int caseAdminId)
         {
-            userService.AddCase(clientId, caseAdmin);
+            userService.AddCase(clientId, title, caseAdminId);
             return RedirectToAction("Index");
         }
 
         [HttpGet("addfeeearner")]
         public IActionResult AddFeeEarner()
         {
-            return View();
+            return View(userService.GetAllCaseAndUsers());
         }
 
         [HttpPost("addfeeearner")]
-        public IActionResult FeeEarnerAdded(int caseId, string feeEarner)
+        public IActionResult FeeEarnerAdded(int caseId, int feeEarnerId, double rate)
         {
-            userService.AddFeeEarner(caseId, feeEarner);
+            userService.AddFeeEarner(caseId, feeEarnerId, rate);
             return RedirectToAction("Index");
         }
 
         [HttpGet("addevent")]
         public IActionResult AddEvent()
         {
-            return View();
+            return View(userService.GetAllCases());
         }
 
         [HttpPost("addevent")]
@@ -91,13 +97,13 @@ namespace BusinessManager.Controllers
         [HttpGet("adddocument")]
         public IActionResult AddDocument()
         {
-            return View();
+            return View(userService.GetAllCases());
         }
 
         [HttpPost("adddocument")]
-        public IActionResult DocumentAdded(string path, int caseId)
+        public IActionResult DocumentAdded(string title, string path, int caseId)
         {
-            userService.AddDocument(path, caseId);
+            userService.AddDocument(title, path, caseId);
             return RedirectToAction("Index");
         }
     }

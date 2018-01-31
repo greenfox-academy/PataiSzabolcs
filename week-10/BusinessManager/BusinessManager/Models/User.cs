@@ -11,6 +11,7 @@ namespace BusinessManager.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Salt { get; set; }
         public IList<ClientAdmin> AdministeredClients { get; set; }
         public IList<CaseAdmin> AdministeredCases { get; set; }
         public IList<Billable> Billables { get; set; }

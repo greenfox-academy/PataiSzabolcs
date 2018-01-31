@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180131110251_ChangeSaltToInt.cs" />
+    <Compile Remove="Migrations\20180131110251_ChangeSaltToInt.Designer.cs" />
+    <Compile Remove="Migrations\20180131110350_RemoveSalt.cs" />
+    <Compile Remove="Migrations\20180131110350_RemoveSalt.Designer.cs" />
+    <Compile Remove="Migrations\20180131110659_RemoveSalt.cs" />
+    <Compile Remove="Migrations\20180131110659_RemoveSalt.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

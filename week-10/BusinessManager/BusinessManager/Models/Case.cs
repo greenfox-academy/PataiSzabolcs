@@ -6,6 +6,7 @@ namespace BusinessManager.Models
     public class Case
     {
         public int Id { get; set; }
+        public string Title { get; set; }
         public Client Client { get; set; }
         public IList<CaseAdmin> CaseAdmins { get; set; }
         public IList<Billable> Billables { get; set; }
