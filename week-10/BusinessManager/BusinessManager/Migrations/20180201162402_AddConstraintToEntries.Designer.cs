@@ -11,9 +11,10 @@ using System;
 namespace BusinessManager.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    partial class BusinessContextModelSnapshot : ModelSnapshot
+    [Migration("20180201162402_AddConstraintToEntries")]
+    partial class AddConstraintToEntries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,8 +132,6 @@ namespace BusinessManager.Migrations
                     b.Property<double>("Hours");
 
                     b.Property<string>("Narrative");
-
-                    b.Property<bool>("Ongoing");
 
                     b.Property<DateTime>("WorkEnded");
 

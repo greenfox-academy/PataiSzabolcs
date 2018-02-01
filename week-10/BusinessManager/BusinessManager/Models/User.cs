@@ -16,5 +16,6 @@ namespace BusinessManager.Models
         public IList<CaseAdmin> AdministeredCases { get; set; }
         public IList<Billable> Billables { get; set; }
         public IList<Event> Events { get; set; }
+        public IList<Entry> Entries { get; set; }
     }
 }

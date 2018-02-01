@@ -1,6 +1,5 @@
 ﻿using BusinessManager.Models;
 using BusinessManager.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,62 +8,40 @@ using System.Threading.Tasks;
 
 namespace BusinessManager.Controllers
 {
-    [Route("user")]
-    public class UserController : Controller
+    [Route("admin")]
+    public class AdminController : Controller
     {
-        private UserService userService;
+        private AdminService adminService;
 
-        public UserController(UserService userService)
+        public AdminController(AdminService adminService)
         {
-            this.userService = userService;
-        }
-
-        [Route("setuser/{id}")]
-        public IActionResult SetUser([FromRoute] int id)
-        {
-            userService.SetUser(id);
-            return RedirectToAction("Index");
+            this.adminService = adminService;
         }
 
         [HttpGet("")]
         public IActionResult Index()
         {
-            return View(userService.GetUser());
+            return View(adminService.GetAllUsers());
         }
 
         [HttpGet("clients")]
         public IActionResult Clients()
         {
-            userService.GetAllCases();
-            userService.GetAllUsers();
-            userService.GetAllCaseAdmins();
-            userService.GetAllBillables();
-            return View(userService.GetClients());
+            adminService.GetAllCases();
+            adminService.GetAllUsers();
+            adminService.GetAllCaseAdmins();
+            adminService.GetAllBillables();
+            return View(adminService.GetAllClients());
         }
 
         [HttpGet("cases")]
         public IActionResult Cases()
         {
-            userService.GetAllClients();
-            userService.GetAllUsers();
-            userService.GetAllCaseAdmins();
-            userService.GetAllBillables();
-            userService.GetAllEntries();
-            return View(userService.GetCases());
-        }
-
-        [HttpPost("timerstart")]
-        public IActionResult StartTimer([FromForm] int caseId, [FromForm] int userId, [FromForm] string narrative)
-        {
-            userService.StartTimer(caseId, userId, narrative);
-            return RedirectToAction("Cases");
-        }
-
-        [HttpPost("timerstop")]
-        public IActionResult StopTimer([FromForm] int caseId, [FromForm] int userId, string narrative)
-        {
-            userService.StopTimer(caseId, userId, narrative);
-            return RedirectToAction("Cases");
+            adminService.GetAllClients();
+            adminService.GetAllUsers();
+            adminService.GetAllCaseAdmins();
+            adminService.GetAllBillables();
+            return View(adminService.GetAllCases());
         }
 
         [HttpGet("adduser")]
@@ -76,7 +53,7 @@ namespace BusinessManager.Controllers
         [HttpPost("adduser")]
         public IActionResult UserAdded(string username, string password)
         {
-            userService.AddUser(username, password);
+            adminService.AddUser(username, password);
             return RedirectToAction("Index");
         }
 
@@ -85,69 +62,69 @@ namespace BusinessManager.Controllers
         {
             return View();
         }
-               
+
         [HttpGet("addclient")]
         public IActionResult AddClient()
         {
-            return View(userService.GetAllUsers());
+            return View(adminService.GetAllUsers());
         }
 
         [HttpPost("addclient")]
         public IActionResult ClientAdded(string name, int clientAdminId)
         {
-            userService.AddClient(name, clientAdminId);
+            adminService.AddClient(name, clientAdminId);
             return RedirectToAction("Index");
         }
 
         [HttpGet("addcase")]
         public IActionResult AddCase()
         {
-            return View(userService.GetAllClientsAndUsers());
+            return View(adminService.GetAllClientsAndUsers());
         }
 
         [HttpPost("addcase")]
         public IActionResult CaseAdded(int clientId, string title, int caseAdminId)
         {
-            userService.AddCase(clientId, title, caseAdminId);
+            adminService.AddCase(clientId, title, caseAdminId);
             return RedirectToAction("Index");
         }
 
         [HttpGet("addfeeearner")]
         public IActionResult AddFeeEarner()
         {
-            return View(userService.GetAllCaseAndUsers());
+            return View(adminService.GetAllCaseAndUsers());
         }
 
         [HttpPost("addfeeearner")]
         public IActionResult FeeEarnerAdded(int caseId, int feeEarnerId, double rate)
         {
-            userService.AddFeeEarner(caseId, feeEarnerId, rate);
+            adminService.AddFeeEarner(caseId, feeEarnerId, rate);
             return RedirectToAction("Index");
         }
 
         [HttpGet("addevent")]
         public IActionResult AddEvent()
         {
-            return View(userService.GetAllCases());
+            return View(adminService.GetAllCases());
         }
 
         [HttpPost("addevent")]
         public IActionResult EventAdded(int caseId, string title, DateTime date)
         {
-            userService.AddEvent(caseId, title, date);
+            adminService.AddEvent(caseId, title, date);
             return RedirectToAction("Index");
         }
 
         [HttpGet("adddocument")]
         public IActionResult AddDocument()
         {
-            return View(userService.GetAllCases());
+            return View(adminService.GetAllCases());
         }
 
         [HttpPost("adddocument")]
         public IActionResult DocumentAdded(string title, string path, int caseId)
         {
-            userService.AddDocument(title, path, caseId);
+            adminService.AddDocument(title, path, caseId);
             return RedirectToAction("Index");
         }
     }

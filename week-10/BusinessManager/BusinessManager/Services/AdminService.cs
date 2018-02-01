@@ -8,116 +8,73 @@ using System.Threading.Tasks;
 
 namespace BusinessManager.Services
 {
-    public class UserService
+    public class AdminService
     {
-        private UserRepository userRepository;
-        private User user;  
+        private AdminRepository adminRepository;
 
-        public UserService(UserRepository userRepository, User user)
+        public AdminService(AdminRepository adminRepository)
         {
-            this.userRepository = userRepository;
-            this.user = user;
+            this.adminRepository = adminRepository;
         }
-
         public void AddUser(string username, string password)
         {
             string salt = GenerateSalt();
-            userRepository.AddUser(username, GetHash(salt, password), salt);
+            adminRepository.AddUser(username, GetHash(salt, password), salt);
         }
 
         public void AddClient(string name, int clientAdminId)
         {
-            userRepository.AddClient(name, clientAdminId);
+            adminRepository.AddClient(name, clientAdminId);
         }
-
-        public void SetUser(int userId)
-        {
-            user.Username = userRepository.GetUser(userId).Username;
-            user.Id = userRepository.GetUser(userId).Id;
-            user.AdministeredCases = userRepository.GetUser(userId).AdministeredCases;
-            user.AdministeredClients = userRepository.GetUser(userId).AdministeredClients;
-            user.Billables = userRepository.GetUser(userId).Billables;
-            user.Events = userRepository.GetUser(userId).Events;
-        }
-
-        public List<Client> GetClients()
-        {
-            return userRepository.GetClients(user.Id);
-        }
-
-        public void GetAllEntries()
-        {
-            userRepository.GetAllEntries();
-        }
-
-        public UserCasesViewModel GetCases()
-        {
-            return new UserCasesViewModel() { User = user, Cases = userRepository.GetCases(user.Id) };
-        }
-
-        public void StartTimer(int caseId, int userId, string narrative)
-        {
-            userRepository.StartTimer(caseId, userId, narrative);
-        }
-
-        public User GetUser()
-        {
-            return user;
-        }
-
-        public void StopTimer(int caseId, int userId, string narrative)
-        {
-            userRepository.StopTimer(caseId, userId, narrative);
-        }
-
+        
         public User GetUser(int userId)
         {
-            return userRepository.GetUser(userId);
+            return adminRepository.GetUser(userId);
         }
 
         public void GetAllClientAdmins()
         {
-            userRepository.GetAllClientAdmins();
+            adminRepository.GetAllClientAdmins();
         }
 
         public void GetAllCaseAdmins()
         {
-            userRepository.GetAllCaseAdmins();
+            adminRepository.GetAllCaseAdmins();
         }
 
         public void GetAllBillables()
         {
-            userRepository.GetAllBillables();
+            adminRepository.GetAllBillables();
         }
 
         public void AddCase(int clientId, string title, int caseAdminId)
         {
-            userRepository.AddCase(clientId, title, caseAdminId);
+            adminRepository.AddCase(clientId, title, caseAdminId);
         }
 
         public void AddFeeEarner(int caseId, int feeEarnerId, double rate)
         {
-            userRepository.AddFeeEarner(caseId, feeEarnerId, rate);
+            adminRepository.AddFeeEarner(caseId, feeEarnerId, rate);
         }
 
         public void AddEvent(int caseId, string title, DateTime date)
         {
-            userRepository.AddEvent(caseId, title, date);
+            adminRepository.AddEvent(caseId, title, date);
         }
 
         public void AddDocument(string title, string path, int caseId)
         {
-            userRepository.AddDocument(title, path, caseId);
+            adminRepository.AddDocument(title, path, caseId);
         }
 
         public List<Client> GetAllClients()
         {
-            return userRepository.GetAllClients();
+            return adminRepository.GetAllClients();
         }
 
         public List<User> GetAllUsers()
         {
-            return userRepository.GetAllUsers();
+            return adminRepository.GetAllUsers();
         }
 
         public UserClientViewModel GetAllClientsAndUsers()
@@ -144,9 +101,9 @@ namespace BusinessManager.Services
 
         public List<Case> GetAllCases()
         {
-            return userRepository.GetAllCases();
+            return adminRepository.GetAllCases();
         }
-        
+
         public string GenerateSalt()
         {
             Random random = new Random();

@@ -11,9 +11,10 @@ using System;
 namespace BusinessManager.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    partial class BusinessContextModelSnapshot : ModelSnapshot
+    [Migration("20180131192456_AddingNamesToManyToManies")]
+    partial class AddingNamesToManyToManies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,40 +116,6 @@ namespace BusinessManager.Migrations
                     b.ToTable("Documents");
                 });
 
-            modelBuilder.Entity("BusinessManager.Models.Entry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("BillableCaseId");
-
-                    b.Property<int?>("BillableUserId");
-
-                    b.Property<int?>("CaseId");
-
-                    b.Property<int?>("FeeEarnerId");
-
-                    b.Property<double>("Hours");
-
-                    b.Property<string>("Narrative");
-
-                    b.Property<bool>("Ongoing");
-
-                    b.Property<DateTime>("WorkEnded");
-
-                    b.Property<DateTime>("WorkStarted");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CaseId");
-
-                    b.HasIndex("FeeEarnerId");
-
-                    b.HasIndex("BillableCaseId", "BillableUserId");
-
-                    b.ToTable("Entries");
-                });
-
             modelBuilder.Entity("BusinessManager.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -182,8 +149,6 @@ namespace BusinessManager.Migrations
                     b.Property<double>("HourlyRate");
 
                     b.Property<double>("Hours");
-
-                    b.Property<DateTime>("WorkStarted");
 
                     b.HasKey("CaseId", "UserId");
 
@@ -299,21 +264,6 @@ namespace BusinessManager.Migrations
                     b.HasOne("BusinessManager.Models.Case", "Case")
                         .WithMany("Documents")
                         .HasForeignKey("CaseId");
-                });
-
-            modelBuilder.Entity("BusinessManager.Models.Entry", b =>
-                {
-                    b.HasOne("BusinessManager.Models.Case", "Case")
-                        .WithMany("Entries")
-                        .HasForeignKey("CaseId");
-
-                    b.HasOne("BusinessManager.Models.User", "FeeEarner")
-                        .WithMany("Entries")
-                        .HasForeignKey("FeeEarnerId");
-
-                    b.HasOne("BusinessManager.Models.JointModels.Billable", "Billable")
-                        .WithMany("Entries")
-                        .HasForeignKey("BillableCaseId", "BillableUserId");
                 });
 
             modelBuilder.Entity("BusinessManager.Models.Event", b =>

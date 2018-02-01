@@ -22,7 +22,13 @@ namespace BusinessManager.Entities
         public DbSet<ContactPerson> ContacPeople { get; set; }
         public DbSet<BillingInfo> BillingInfoList { get; set; }
         public DbSet<Document> Documents{ get; set; }
+        public DbSet<Entry> Entries { get; set; }
         public DbSet<Billable> Billables { get; set; }
+        public DbSet<ClientAdmin> ClientAdmins { get; set; }
+        public DbSet<CaseAdmin> CaseAdmins { get; set; }
+        public DbSet<DocumentEvent> DocumentEvents { get; set; }
+        public DbSet<UserDocument> UserDocument { get; set; }
+        public DbSet<UserEvent> UserEvents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,6 +63,18 @@ namespace BusinessManager.Entities
             modelBuilder.Entity<Client>()
                 .HasOne(c => c.BillingInfo)
                 .WithOne(b => b.Client);
+
+            modelBuilder.Entity<Billable>()
+                .HasMany(b => b.Entries)
+                .WithOne(e => e.Billable);
+
+            modelBuilder.Entity<Case>()
+                .HasMany(b => b.Entries)
+                .WithOne(e => e.Case);
+
+            modelBuilder.Entity<User>()
+                .HasMany(b => b.Entries)
+                .WithOne(e => e.FeeEarner);
         }
     }
 }

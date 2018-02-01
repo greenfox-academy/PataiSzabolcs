@@ -11,9 +11,10 @@ using System;
 namespace BusinessManager.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    partial class BusinessContextModelSnapshot : ModelSnapshot
+    [Migration("20180201155702_AddEntries")]
+    partial class AddEntries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,25 +125,11 @@ namespace BusinessManager.Migrations
 
                     b.Property<int?>("BillableUserId");
 
-                    b.Property<int?>("CaseId");
-
-                    b.Property<int?>("FeeEarnerId");
-
                     b.Property<double>("Hours");
 
                     b.Property<string>("Narrative");
 
-                    b.Property<bool>("Ongoing");
-
-                    b.Property<DateTime>("WorkEnded");
-
-                    b.Property<DateTime>("WorkStarted");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CaseId");
-
-                    b.HasIndex("FeeEarnerId");
 
                     b.HasIndex("BillableCaseId", "BillableUserId");
 
@@ -303,14 +290,6 @@ namespace BusinessManager.Migrations
 
             modelBuilder.Entity("BusinessManager.Models.Entry", b =>
                 {
-                    b.HasOne("BusinessManager.Models.Case", "Case")
-                        .WithMany("Entries")
-                        .HasForeignKey("CaseId");
-
-                    b.HasOne("BusinessManager.Models.User", "FeeEarner")
-                        .WithMany("Entries")
-                        .HasForeignKey("FeeEarnerId");
-
                     b.HasOne("BusinessManager.Models.JointModels.Billable", "Billable")
                         .WithMany("Entries")
                         .HasForeignKey("BillableCaseId", "BillableUserId");

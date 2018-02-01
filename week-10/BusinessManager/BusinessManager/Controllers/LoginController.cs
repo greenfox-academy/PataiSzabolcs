@@ -27,7 +27,16 @@ namespace BusinessManager.Controllers
         [HttpPost("")]
         public IActionResult LoginCheck(string username, string password)
         {
-            return Redirect("/user");
+            if (username.Equals("Admin") && loginService.IsAuthorized(username, password))
+            {
+                return Redirect("/admin");
+            }
+            if (loginService.IsAuthorized(username, password))
+            {
+                return Redirect($"/user/setuser/{loginService.GetUserId(username)}");
+            }
+            ViewBag.Message = "Wrong credentials!";
+            return View("LoginPage", ViewBag.Message);
         }
     }
 }

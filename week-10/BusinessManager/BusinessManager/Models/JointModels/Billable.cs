@@ -13,5 +13,7 @@ namespace BusinessManager.Models.JointModels
         public User FeeEarner { get; set; }
         public double HourlyRate { get; set; }
         public double Hours { get; set; }
+        public DateTime WorkStarted { get; set; }
+        public IList<Entry> Entries { get; set; }
     }
 }

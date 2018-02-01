@@ -14,5 +14,15 @@ namespace BusinessManager.Services
         {
             this.loginRepository = loginRepository;
         }
+
+        public bool IsAuthorized(string username, string password)
+        {
+            return username != null && loginRepository.UserExists(username) && loginRepository.CorrectPassword(username, UserService.GetHash(loginRepository.GetSalt(username), password));
+        }
+
+        public int GetUserId(string username)
+        {
+            return loginRepository.GetUserId(username);
+        }
     }
 }

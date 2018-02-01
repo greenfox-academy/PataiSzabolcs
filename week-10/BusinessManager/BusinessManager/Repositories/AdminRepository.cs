@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BusinessManager.Repositories
 {
-    public class UserRepository
+    public class AdminRepository
     {
         private BusinessContext businessContext;
 
-        public UserRepository(BusinessContext businessContext)
+        public AdminRepository(BusinessContext businessContext)
         {
             this.businessContext = businessContext;
         }
@@ -27,8 +27,7 @@ namespace BusinessManager.Repositories
                 Salt = salt,
                 AdministeredClients = new List<ClientAdmin>(),
                 Billables = new List<Billable>(),
-                Events = new List<Event>(),
-                Entries = new List<Entry>()
+                Events = new List<Event>()
             });
             businessContext.SaveChanges();
         }
@@ -50,73 +49,14 @@ namespace BusinessManager.Repositories
             businessContext.SaveChanges();
         }
 
-        public List<Entry> GetAllEntries()
-        {
-            return businessContext.Entries.ToList();
-        }
-
         public List<Client> GetClients(int userId)
         {
             businessContext.ClientAdmins.Load();
             return businessContext.Clients.Where(c => c.ClientAdmins.Any(a => a.UserId == userId)).ToList();
         }
 
-        public void StartTimer(int caseId, int userId, string narrative)
-        {
-            Case curentcase = businessContext.Cases.FirstOrDefault(c => c.Id == caseId);
-            User feeEarner = businessContext.Users.FirstOrDefault(u => u.Id == userId);
-            Billable billable = businessContext.Billables.FirstOrDefault(b => b.CaseId == curentcase.Id && b.FeeEarner.Id == feeEarner.Id);
-
-            if (curentcase.Entries == null)
-            {
-                curentcase.Entries = new List<Entry>();
-            }
-
-            if (feeEarner.Entries == null)
-            {
-                feeEarner.Entries = new List<Entry>();
-            }
-
-            if (billable.Entries == null)
-            {
-                billable.Entries = new List<Entry>();
-            }
-
-            Entry entry = new Entry()
-            {
-                Case = businessContext.Cases.FirstOrDefault(c => c.Id == caseId),
-                FeeEarner = businessContext.Users.FirstOrDefault(u => u.Id == userId),
-                Narrative = narrative, WorkStarted = DateTime.Now,
-                Ongoing = true
-            };
-            billable.Entries.Add(entry);
-            curentcase.Entries.Add(entry);
-            feeEarner.Entries.Add(entry);
-            businessContext.SaveChanges();
-        }
-
-        public void StopTimer(int caseId, int userId, string narrative)
-        {
-            Billable billable = businessContext.Billables.Where(b => b.CaseId == caseId).FirstOrDefault(c => c.FeeEarner.Id == userId);
-            Entry entry = businessContext.Entries.Where(b => b.FeeEarner.Id == userId && b.Case.Id == caseId).FirstOrDefault(e => e.Ongoing);
-            entry.WorkEnded = DateTime.Now;
-            entry.Ongoing = false;
-            var workedHours = entry.WorkEnded.Subtract(entry.WorkStarted).TotalHours;
-            if (workedHours > 100000.00)
-            {
-                return;
-            }
-            billable.Hours += workedHours;
-            entry.Hours += workedHours;
-            entry.Narrative = narrative;
-            businessContext.SaveChanges();
-        }
-
         public List<Case> GetCases(int userId)
         {
-            businessContext.CaseAdmins.Load();
-            businessContext.Billables.Load();
-            businessContext.Entries.Load();
             return businessContext.Cases
                 .Where(c => c.CaseAdmins
                 .Any(a => a.UserId == userId)
@@ -164,12 +104,11 @@ namespace BusinessManager.Repositories
                 },
                 Billables = new List<Billable>(),
                 Documents = new List<Document>(),
-                Events = new List<Event>(),
-                Entries = new List<Entry>()
+                Events = new List<Event>()
             });
             businessContext.SaveChanges();
         }
-        
+
         public void AddFeeEarner(int caseId, int feeEarnerId, double rate)
         {
             businessContext.Users.Load();
@@ -178,8 +117,7 @@ namespace BusinessManager.Repositories
             {
                 Case = GetCase(caseId),
                 FeeEarner = GetUser(feeEarnerId),
-                HourlyRate = rate,
-                Entries = new List<Entry>()
+                HourlyRate = rate
             });
             businessContext.SaveChanges();
         }
@@ -210,10 +148,11 @@ namespace BusinessManager.Repositories
 
         public List<Client> GetAllClients()
         {
+            businessContext.ClientAdmins.Load();
             return businessContext.Clients.ToList();
         }
 
-        public List<ClientAdmin>GetAllClientAdmins()
+        public List<ClientAdmin> GetAllClientAdmins()
         {
             return businessContext.ClientAdmins.ToList();
         }

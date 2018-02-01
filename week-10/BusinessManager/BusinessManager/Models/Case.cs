@@ -12,5 +12,6 @@ namespace BusinessManager.Models
         public IList<Billable> Billables { get; set; }
         public IList<Document> Documents { get; set; }
         public IList<Event> Events { get; set; }
+        public IList<Entry> Entries { get; set; }
     }
 }
