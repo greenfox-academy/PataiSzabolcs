@@ -10,9 +10,9 @@
         Case:<br>
         <select name="caseId">
             @foreach (var clientcase in Model)
-        {
-            <option value="@clientcase.Id">@clientcase.Title</option>
-    }
+            {
+                <option value="@clientcase.Id">@clientcase.Title</option>
+            }
         </select>
         <br>
         Event Title:<br>
@@ -22,7 +22,7 @@
         <input type="datetime-local" name="date">
         <br>
         <br><br>
-        <input type="submit" value="Add New Event">
+        <input type="submit" class="btn btn-outline-secondary" value="Add New Event">
     </form>
 </body>
 </html>
